@@ -1,136 +1,34 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import styles from "./Navbar.css";
+import React from "react";
+import { Navbar as Bar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import gcclogo from '../../static/images/logo/gcclogo.png';
 
-class Navbar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      collapsed: true,
-      collapsing: false,
-      in: false,
-      height: "auto",
-    };
-
-    this.navLinkList = undefined;
-    this.open = this.open.bind(this);
-    this.close = this.close.bind(this);
-    this.toggle = this.toggle.bind(this);
-  }
-
-  // PropTypes
-  static get propTypes() {
-    return {
-      className: PropTypes.string,
-      brand: PropTypes.element,
-      links: PropTypes.arrayOf(PropTypes.element),
-    };
-  }
-
-  // Default Props
-  static get defaultProps() {
-    return {
-      className: "",
-      brand: null,
-      links: [],
-    };
-  }
-
-  // Toggling the navbar state
-  toggle() {
-    if (this.state.collapsing) {
-      return;
-    }
-
-    const collapsed = this.state.collapsed;
-    this.setState(
-      {
-        collapsed: !collapsed,
-        collapsing: true,
-        height: collapsed ? 0 : this.navLinkList.clientHeight,
-      },
-      () => {
-        setTimeout(() => {
-          this.setState(
-            {
-              height: collapsed ? this.navLinkList.clientHeight : 0,
-            },
-            () => {
-              setTimeout(() => {
-                this.setState({
-                  collapsing: false,
-                  height: "auto",
-                  in: collapsed ? true : undefined,
-                });
-              }, 300);
-            }
-          );
-        }, 10);
-      }
-    );
-  }
-
-  // Opening the navbar
-  open() {
-    if (this.state.collapsed) {
-      this.toggle();
-    }
-  }
-
-  // Closing the navbar
-  close() {
-    if (!this.state.collapsed) {
-      this.toggle();
-    }
-  }
-
-  render() {
-    return (
-      <nav
-        id={styles.mainNavbar}
-        className={`navbar navbar-expand-lg ${this.props.className || ""}`}
-      >
-        {this.props.brand &&
-          React.cloneElement(this.props.brand, {
-            className: `navbar-brand ${styles["navbar-brand"]}`,
-            onClick: this._close,
-          })}
-        <button
-          className={`navbar-toggler ${styles["navbar-toggler"]}`}
-          type="button"
-          onClick={this.toggle}
-        >
-          <span
-            className={`navbar-toggler-icon ${styles["navbar-toggler-icon"]}`}
-          />
-        </button>
-        <div
-          className={classnames("navbar-collapse", {
-            show: this.state.in,
-            collapsing: this.state.collapsing,
-            collapse: !this.state.collapsing,
-          })}
-          style={{ height: this.state.height }}
-        >
-          <ul
-            className={`navbar-nav ml-auto ${styles["navbar-nav"]}`}
-            ref={(el) => {
-              this.navLinkList = el;
-            }}
-          >
-            {React.Children.map(this.props.links, (link) => (
-              <li className="nav-item">
-                {React.cloneElement(link, {
-                  onClick: this.close,
-                  className: `nav-link ${styles["nav-link"]} ${link.props.className}`,
-                })}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </nav>
-    );
-  }
-}
+const Navbar = () => (
+    <Bar bg="light" expand="lg">
+        <Bar.Brand href="#home">React-Bootstrap</Bar.Brand>
+        <Bar.Toggle aria-controls="basic-navbar-nav" />
+        <Bar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#link">Link</Nav.Link>
+            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+            </NavDropdown>
+            </Nav>
+            <Form inline>
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+            <Button variant="outline-success">Search</Button>
+            </Form>
+        </Bar.Collapse>
+        <img 
+                        src={gcclogo} 
+                        alt={gcclogo} 
+                        className='home__img'
+                    />
+    </Bar>
+);
 
 export default Navbar;
