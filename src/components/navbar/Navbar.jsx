@@ -2,10 +2,10 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import gcclogo from '../../static/images/logo/gcclogo.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,12 +35,23 @@ export default function ButtonAppBar() {
           color="inherit"
           aria-label="menu"
         >
-          <MenuIcon />
+        <MenuIcon />
         </IconButton>
-        <Typography variant="h6" className={classes.title}>
+        {/* <Typography variant="h6" className={classes.title}>
           News
-        </Typography>
-        <Button color="inherit">Login</Button>
+        </Typography> */}
+        <img 
+            src={gcclogo} 
+            alt={gcclogo} 
+            className='home__img'
+            style={{width:'205.516px', height:'85px'}}
+        />
+        <Button color="inherit">About</Button>
+        <Button color="inherit">Family Groups</Button>
+        <Button color="inherit">Ministries</Button>
+        <Button color="inherit">Giving</Button>
+        <Button color="inherit">Multimedia</Button>
+        <Button color="inherit">Events</Button>
       </Toolbar>
     </AppBar>
   );
