@@ -1,41 +1,41 @@
-import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import { Link } from 'react-router-dom';
-import Grid from '@material-ui/core/Grid';
+import React from "react";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Drawer from "@material-ui/core/Drawer";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import ListItem from "@material-ui/core/ListItem";
+import { Link } from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
 import gcclogo from "../../static/images/logo/gcclogo.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    display: "flex",
   },
   appbar: {
     flexGrow: 1,
-    color: 'black',
-    background: 'transparent',
-    position: 'fixed',
-    boxShadow: 'none'
+    color: "black",
+    background: "transparent",
+    position: "fixed",
+    boxShadow: "none",
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    [theme.breakpoints.up('md')]: {
-        display: 'none',
+    [theme.breakpoints.up("md")]: {
+      display: "none",
     },
   },
   title: {
     flexGrow: 1,
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'block',
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "block",
     },
   },
 }));
@@ -55,7 +55,6 @@ export default function PersistentDrawerLeft() {
 
   return (
     <div className={classes.root}>
-
       <AppBar position="static" className={classes.appbar}>
         <Toolbar>
           <IconButton
@@ -68,20 +67,92 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
 
-          <Grid container alignItems='center'>
-            <Grid item sm={3} style={{border:'2px solid red'}}>
-              <Link to='/'><img src={gcclogo} alt={gcclogo} className="home__img" style={{ width: "205.516px", height: "85px" }} /></Link>
+          <Grid container alignItems="center">
+            <Grid item sm={3} style={{ border: "2px solid red" }}>
+              <Link to="/">
+                <img
+                  src={gcclogo}
+                  alt={gcclogo}
+                  className="home__img"
+                  style={{ width: "205.516px", height: "85px" }}
+                />
+              </Link>
             </Grid>
-            <Grid item sm={9} style={{border:'2px solid red'}} className={classes.title}>
-              <Link to='/' style={{color:'white', fontWeight:'bold', fontSize:'18px', paddingLeft:'40px'}}>About</Link>
-              <Link to='/' style={{color:'white', fontWeight:'bold', fontSize:'18px', paddingLeft:'40px'}}>Family Groups</Link>
-              <Link to='/' style={{color:'white', fontWeight:'bold', fontSize:'18px', paddingLeft:'40px'}}>Ministries</Link>
-              <Link to='/' style={{color:'white', fontWeight:'bold', fontSize:'18px', paddingLeft:'40px'}}>Giving</Link>
-              <Link to='/' style={{color:'white', fontWeight:'bold', fontSize:'18px', paddingLeft:'40px'}}>Multimedia</Link>
-              <Link to='/' style={{color:'white', fontWeight:'bold', fontSize:'18px', paddingLeft:'40px'}}>Events</Link>
+            <Grid
+              item
+              sm={9}
+              style={{ border: "2px solid red" }}
+              className={classes.title}
+            >
+              <Link
+                to="/"
+                style={{
+                  color: "white",
+                  fontWeight: "bold",
+                  fontSize: "18px",
+                  paddingLeft: "40px",
+                }}
+              >
+                About
+              </Link>
+              <Link
+                to="/"
+                style={{
+                  color: "white",
+                  fontWeight: "bold",
+                  fontSize: "18px",
+                  paddingLeft: "40px",
+                }}
+              >
+                Family Groups
+              </Link>
+              <Link
+                to="/"
+                style={{
+                  color: "white",
+                  fontWeight: "bold",
+                  fontSize: "18px",
+                  paddingLeft: "40px",
+                }}
+              >
+                Ministries
+              </Link>
+              <Link
+                to="/"
+                style={{
+                  color: "white",
+                  fontWeight: "bold",
+                  fontSize: "18px",
+                  paddingLeft: "40px",
+                }}
+              >
+                Giving
+              </Link>
+              <Link
+                to="/"
+                style={{
+                  color: "white",
+                  fontWeight: "bold",
+                  fontSize: "18px",
+                  paddingLeft: "40px",
+                }}
+              >
+                Multimedia
+              </Link>
+              <Link
+                to="/"
+                style={{
+                  color: "white",
+                  fontWeight: "bold",
+                  fontSize: "18px",
+                  paddingLeft: "40px",
+                }}
+              >
+                Events
+              </Link>
             </Grid>
 
-              {/* <Grid item container xs={3} sm={4} style={{textAlign:'right'}}>
+            {/* <Grid item container xs={3} sm={4} style={{textAlign:'right'}}>
                 <h5 className={classes.title}><Link to='/finery/clothes' style={{color:'black',textDecoration:'none'}}>clothes</Link></h5>
                 <h5 className={classes.title}><Link to='/finery/shoes' style={{color:'black',textDecoration:'none'}}>shoes</Link></h5>
                 <h5 className={classes.title}><Link to='/finery/accessories' style={{color:'black',textDecoration:'none'}}>accessories</Link></h5>
@@ -94,17 +165,18 @@ export default function PersistentDrawerLeft() {
                 <h5 className={classes.title}><Link to='/finery' style={{color:'black',textDecoration:'none'}}>sign in / up</Link></h5>
                 <h5 className={classes.title}><Link to='/finery' style={{color:'black',textDecoration:'none'}}>cart</Link></h5>
               </Grid> */}
-              
           </Grid>
-
         </Toolbar>
-
       </AppBar>
 
       <Drawer anchor="top" open={open}>
         <div>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            {theme.direction === "ltr" ? (
+              <ChevronLeftIcon />
+            ) : (
+              <ChevronRightIcon />
+            )}
           </IconButton>
         </div>
 
@@ -112,41 +184,59 @@ export default function PersistentDrawerLeft() {
 
         <List>
           <ListItem>
-            <Link to='/' style={{color:'black',textDecoration:'none'}}>Welcome</Link>
+            <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+              Welcome
+            </Link>
           </ListItem>
           <ListItem>
-            <Link to='/' style={{color:'black',textDecoration:'none'}}>Beliefs</Link>
+            <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+              Beliefs
+            </Link>
           </ListItem>
           <ListItem>
-            <Link to='/' style={{color:'black',textDecoration:'none'}}>Staff</Link>
+            <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+              Staff
+            </Link>
           </ListItem>
           <ListItem>
-            <Link to='/' style={{color:'black',textDecoration:'none'}}>Mainline Site</Link>
+            <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+              Mainline Site
+            </Link>
           </ListItem>
           <ListItem>
-            <Link to='/' style={{color:'black',textDecoration:'none'}}>AMI</Link>
+            <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+              AMI
+            </Link>
           </ListItem>
           <ListItem>
-            <Link to='/' style={{color:'black',textDecoration:'none'}}>Family Groups</Link>
+            <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+              Family Groups
+            </Link>
           </ListItem>
           <ListItem>
-            <Link to='/' style={{color:'black',textDecoration:'none'}}>Ministries</Link>
+            <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+              Ministries
+            </Link>
           </ListItem>
           <ListItem>
-            <Link to='/' style={{color:'black',textDecoration:'none'}}>Giving</Link>
+            <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+              Giving
+            </Link>
           </ListItem>
           <ListItem>
-            <Link to='/' style={{color:'black',textDecoration:'none'}}>Multimedia</Link>
+            <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+              Multimedia
+            </Link>
           </ListItem>
           <ListItem>
-            <Link to='/' style={{color:'black',textDecoration:'none'}}>Events</Link>
+            <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+              Events
+            </Link>
           </ListItem>
         </List>
 
         <Divider />
-
       </Drawer>
-
     </div>
   );
 }
