@@ -32,13 +32,22 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
     },
   },
+  collapse__links: {
+    color: "black",
+    textDecoration: "none",
+    fontWeight: '600',
+    '&:hover': {
+      textDecoration: 'none',
+      color: 'rgb(79, 167, 255)',
+    }
+  }
 }));
 
 // See more styling in Navbar.css
-const collapse__links = {
-  color: "black",
-  textDecoration: "none",
-};
+const collapse__listItem = {
+  display:'flex', 
+  justifyContent:'center',
+}
 
 function Navbar() {
   const classes = useStyles();
@@ -53,9 +62,10 @@ function Navbar() {
 
   return (
     <div>
+
+      {/* Not Collapsed; Desktop */}
       <AppBar className={classes.appbar}>
         <Toolbar>
-          {/* Not Collapsed; Desktop */}
           <Grid
             container
             alignItems="center"
@@ -65,6 +75,7 @@ function Navbar() {
               paddingRight: "20px",
             }}
           >
+
             {/* Logo */}
             <Grid item md={4} lg={5} container alignItems="center">
               <Link to="/">
@@ -82,53 +93,35 @@ function Navbar() {
                 <li className="menu__about">
                   <Link to="/">About</Link>
                   <ul className="dropdown">
-                    <Link to="/">
-                      <li className="dropdownLinks">Welcome</li>
-                    </Link>
-                    <Link to="/">
-                      <li className="dropdownLinks">Beliefs</li>
-                    </Link>
-                    <Link to="/">
-                      <li className="dropdownLinks">Staff</li>
-                    </Link>
-                    <Link to="/">
-                      <li className="dropdownLinks">Mainline</li>
-                    </Link>
-                    <Link to="/">
-                      <li className="dropdownLinks">AMI</li>
-                    </Link>
+                    <Link to="/"><li className="dropdownLinks">Welcome</li></Link>
+                    <Link to="/"><li className="dropdownLinks">Beliefs</li></Link>
+                    <Link to="/"><li className="dropdownLinks">Staff</li></Link>
+                    <Link to="/"><li className="dropdownLinks">Mainline</li></Link>
+                    <Link to="/"><li className="dropdownLinks">AMI</li></Link>
                   </ul>
                 </li>
-                <li className="menu__other">
-                  <Link to="/">Family Groups</Link>
-                </li>
-                <li className="menu__other">
-                  <Link to="/">Ministries</Link>
-                </li>
-                <li className="menu__other">
-                  <Link to="/">Giving</Link>
-                </li>
-                <li className="menu__other">
-                  <Link to="/">Multimedia</Link>
-                </li>
-                <li className="menu__other">
-                  <Link to="/">Events</Link>
-                </li>
+                <li className="menu__other"><Link to="/">Family Groups</Link></li>
+                <li className="menu__other"><Link to="/">Ministries</Link></li>
+                <li className="menu__other"><Link to="/">Giving</Link></li>
+                <li className="menu__other"><Link to="/">Multimedia</Link></li>
+                <li className="menu__other"><Link to="/">Events</Link></li>
               </ul>
             </Grid>
           </Grid>
 
-          {/* Collapsed; Mobile */}
+          {/* Icon to collapse */}
           <IconButton
             color="inherit"
             onClick={handleDrawerOpen}
             className={classes.mobile}
+            style={{outline:'none'}}
           >
             <MenuIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
 
+      {/* Collapsed; Mobile */}
       <Drawer anchor="top" open={open}>
         <Grid
           container
@@ -138,6 +131,8 @@ function Navbar() {
             paddingRight: "20px",
           }}
         >
+
+          {/* Logo */}
           <Grid item container xs={6}>
             <Link to="/">
               <img
@@ -147,65 +142,33 @@ function Navbar() {
               />
             </Link>
           </Grid>
-          <Grid item container xs={6} justify="flex-end">
-            <IconButton onClick={handleDrawerClose}>
+
+          {/* Icon to open */}
+          <Grid item container xs={6} justify="flex-end" style={{height:'80%'}}>
+            <IconButton 
+              onClick={handleDrawerClose}
+              style={{outline:'none'}}
+            >
               <MenuIcon />
             </IconButton>
           </Grid>
-          <Grid item>
+
+          {/* Links */}
+          <Grid item style={{width:'100%',paddingBottom:'20px'}}>
             <List>
-              <ListItem>
-                <Link to="/" style={collapse__links}>
-                  Welcome
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/" style={collapse__links}>
-                  Beliefs{" "}
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/" style={collapse__links}>
-                  Staff
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/" style={collapse__links}>
-                  Mainline Site
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/" style={collapse__links}>
-                  AMI
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/" style={collapse__links}>
-                  Family Groups
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/" style={collapse__links}>
-                  Ministries
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/" style={collapse__links}>
-                  Giving
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/" style={collapse__links}>
-                  Multimedia
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/" style={collapse__links}>
-                  Events
-                </Link>
-              </ListItem>
+              <ListItem style={collapse__listItem}><Link to="/" className={classes.collapse__links}>Welcome</Link></ListItem>
+              <ListItem style={collapse__listItem}><Link to="/" className={classes.collapse__links}>Beliefs{" "}</Link></ListItem>
+              <ListItem style={collapse__listItem}><Link to="/" className={classes.collapse__links}>Staff</Link></ListItem>
+              <ListItem style={collapse__listItem}><Link to="/" className={classes.collapse__links}>Mainline Site</Link></ListItem>
+              <ListItem style={collapse__listItem}><Link to="/" className={classes.collapse__links}>AMI</Link></ListItem>
+              <ListItem style={collapse__listItem}><Link to="/" className={classes.collapse__links}>Family Groups</Link></ListItem>
+              <ListItem style={collapse__listItem}><Link to="/" className={classes.collapse__links}>Ministries</Link></ListItem>
+              <ListItem style={collapse__listItem}><Link to="/" className={classes.collapse__links}>Giving</Link></ListItem>
+              <ListItem style={collapse__listItem}><Link to="/" className={classes.collapse__links}>Multimedia</Link></ListItem>
+              <ListItem style={collapse__listItem}><Link to="/" className={classes.collapse__links}>Events</Link></ListItem>
             </List>
           </Grid>
+
         </Grid>
       </Drawer>
     </div>
